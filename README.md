@@ -80,8 +80,8 @@ Les colonnes catégorielles (motif_hospitalisation, traitements_pre_hospitaliers
 ## 🧪 Méthodologie / Méthode Agile
 
 Projet mené en sprints (méthode Agile) :
-✅ Sprint 1 — Modèle de prédiction
-✅ Sprint 2 — Interface utilisateur
+- ✅ Sprint 1 — Modèle de prédiction
+- ✅ Sprint 2 — Interface utilisateur
 - Sprint 3 — Rééquilibrer l'apprentissage sur les longs séjours
 - Sprint 4 — Fiabilisation & amélioration
 
