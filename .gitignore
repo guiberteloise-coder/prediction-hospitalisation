@@ -1,0 +1,32 @@
+# --- Environnement virtuel ---
+venv/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# --- Fichiers de modèle générés (train_model.py les recrée) ---
+model.pkl
+columns.pkl
+metadata.pkl
+
+# --- Jupyter / Colab ---
+.ipynb_checkpoints/
+
+# --- Streamlit (on garde config.toml, on exclut le reste) ---
+.streamlit/*
+!.streamlit/config.toml
+
+# --- Environnement / secrets ---
+.env
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- IDE ---
+.vscode/
+.idea/
