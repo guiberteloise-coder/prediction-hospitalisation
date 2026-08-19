@@ -10,7 +10,21 @@ Lancement : streamlit run app.py
 import joblib
 import pandas as pd
 import streamlit as st
+import os
+import subprocess
 
+def modele_a_jour():
+    """Vérifie si model.pkl existe et est plus récent que le CSV source."""
+    if not all(os.path.exists(f) for f in ["model.pkl", "columns.pkl", "metadata.pkl"]):
+        return False
+    if not os.path.exists("dataset_hospitalisation.csv"):
+        return False
+    return os.path.getmtime("model.pkl") >= os.path.getmtime("dataset_hospitalisation.csv")
+
+
+if not modele_a_jour():
+    with st.spinner("Entraînement du modèle en cours (premier lancement)..."):
+        subprocess.run(["python", "train_model.py"], check=True)
 # ---------------------------------------------------------------------------
 # Chargement du modèle et des métadonnées (une seule fois, mis en cache)
 # ---------------------------------------------------------------------------
