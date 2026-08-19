@@ -10,6 +10,7 @@ Lancement : streamlit run app.py
 import joblib
 import pandas as pd
 import streamlit as st
+import sys
 import os
 import subprocess
 
@@ -24,7 +25,17 @@ def modele_a_jour():
 
 if not modele_a_jour():
     with st.spinner("Entraînement du modèle en cours (premier lancement)..."):
-        subprocess.run(["python", "train_model.py"], check=True)
+        resultat = subprocess.run(
+            [sys.executable, "train_model.py"],
+            capture_output=True,
+            text=True,
+        )
+        if resultat.returncode != 0:
+            st.error("Échec de l'entraînement du modèle :")
+            st.code(resultat.stderr)
+            st.stop()
+
+
 # ---------------------------------------------------------------------------
 # Chargement du modèle et des métadonnées (une seule fois, mis en cache)
 # ---------------------------------------------------------------------------
